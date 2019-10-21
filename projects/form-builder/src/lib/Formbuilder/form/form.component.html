@@ -1,0 +1,29 @@
+<mat-card style="height: 500px;">
+  <mat-card-header style="display: flex; height: 15%">
+    <mat-card-title style="margin: 0 auto;">
+      Exported form
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content style="height: 70%; display: flex; overflow-y: scroll">
+    <form *ngIf="showForm" [formGroup]="formGroup" style="margin: 0 auto;">
+      <dynamic-material-form-control
+        *ngFor="let controlModel of formModel"
+        [group]="formGroup"
+        [model]="controlModel"
+        (click)="controlDetails(controlModel)"
+        [hidden] = "controlModel.hidden">
+        <button mat-button (click)="deleteOption(controlModel)" >Delete</button>
+      </dynamic-material-form-control>
+      <input hidden type="file" multiple #file/>
+      <button mat-button *ngIf='showFile' (click)="file.click()" >{{buttonFile.label}}</button>
+      <br/>
+    </form>
+  </mat-card-content>
+  <mat-card-footer style="display: flex">
+    <mat-card-actions style="margin: 0 auto">
+      <button mat-raised-button color="accent" type="button" (click)="save(formModel)"
+              *ngIf="formModel.length!==0">Save
+      </button>
+    </mat-card-actions>
+  </mat-card-footer>
+</mat-card>

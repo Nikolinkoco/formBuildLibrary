@@ -1,0 +1,3 @@
+::ng-deep.dynamic-form-display .mat-radio-group{
+  display: grid !important;
+}

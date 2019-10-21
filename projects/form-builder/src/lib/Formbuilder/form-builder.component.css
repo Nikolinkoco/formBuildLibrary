@@ -1,0 +1,16 @@
+.properties {
+  margin: 0 auto;
+  width: 33%;
+  height: inherit;
+}
+.form {
+  width: 33%;
+  height: inherit;
+}
+.items {
+  width: 33%;
+  height: inherit;
+}
+.formBuilder {
+  display: flex;
+}

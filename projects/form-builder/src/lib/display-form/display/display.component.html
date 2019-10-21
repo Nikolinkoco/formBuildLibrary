@@ -1,0 +1,35 @@
+<mat-card style="height: 500px;" class="dynamic-form-display">
+  <mat-card-header style="display: flex; height: 15%">
+    <mat-card-title style="margin: 0 auto;">
+    {{formname}}
+    </mat-card-title>
+  </mat-card-header>
+  <mat-card-content style="height: 70%; display: flex; overflow-y: scroll">
+    <form *ngIf="showForm" [formGroup]="formGroup"
+          (ngSubmit)="addSubmitEvent($event)"
+          (submit)="submit(formGroup)"
+          style="margin: 0 auto;">
+      <dynamic-material-form-control class="fields"
+                                     *ngFor="let controlModel of formModel"
+                                     [group]="formGroup"
+                                     [model]="controlModel"
+                                     (blur)="addBlurEvent($event)"
+                                     (change)="addChangeEvent($event)"
+                                     (focus)="addFocusEvent($event)"
+                                     style="margin-bottom: 5px">
+      </dynamic-material-form-control>
+      <input hidden type="file" multiple #file/>
+      <button mat-button *ngIf='showFile' (click)="file.click()" >{{buttonLabel}}</button>
+      <br/>
+    </form>
+  </mat-card-content>
+  <mat-card-footer style="display: flex">
+    <mat-card-actions style="margin: 0 auto">
+      <button mat-raised-button color="accent"
+              type="button"
+              (click)="submit(formGroup)"
+              *ngIf="formModel.length!==0">Back
+      </button>
+    </mat-card-actions>
+  </mat-card-footer>
+</mat-card>
